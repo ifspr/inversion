@@ -1,0 +1,39 @@
+#Configuration file read by the inverse code
+
+[options]
+infile     = data_141026.pkl  ;file containing the observations
+tpqfile    = tpq_141026.pkl   ;file containing T,P,Q information
+infix      = _dzl_            ;ret<infix>count
+calc_error = 0                ;calculate the error of the retrievals? (1=Y, 0=N)
+
+[mixmodel]
+mmod       = 1            ;0: inhomogeneous mixing model (constant Nad) and 1: homogeneous (constant N) 
+
+[lidar]
+wavelength = 3.55e-7      ;wavelength in m
+altitude   = 0.0          ;altitude of instrument in m
+divergence = 2.3e-4       ;transmitter divergence (rad)
+fieldview  = 5.5e-4       ;field-of-view (rad)
+lidarratio = 18.          ;extinction-to-backscatter ratio due to cloud (sr)
+
+[radar]
+frequency  = 35.5         ;GHz
+
+[MWR]
+liq_abs    = lie          ;lie OR ell
+gas_abs    = r98          ;r98 OR l93 OR l87
+
+[DE]
+max_it     = 150          ;maximum number of iterations
+recomb     = 0.8          ;recombination factor
+popsizef   = 10           ;population size
+mutationf  = 0,1.9        ;mutation; (0.5,1.0)
+tolerance  = 0.01         ;tolerance
+
+[boundaries1]
+lb1 = 2.  , 1.e-3 , 1.e-3 , 1.e7 , 1.0 , -10. , -0.99  , 1.e-3 , 1.0 ,  -3.   , -6. , -5. , 1.    ;lower bound for cost1
+ub1 = 20. , 35.   , 1.0   , 5.e9 , 1.0 , -3.0 , -1.e-3 , 0.99  , 10. , -0.001 , -4. , -2. , 3.    ;upper bound for cost1
+
+[boundaries2]
+lb2 = 2.  , 1.e-3, 1.e-3 , 1.e7 , 1.0 , -10. , -0.99  , 1.e-3 , 1.0 , 1.e-3 , 1.e-3 , -3.  , 1.   ;lower bound for cost2 
+ub2 = 20. , 35.  , 1.0   , 5.e9 , 1.0 , -3.0 , -1.e-3 , 0.99  , 10. , 35.   , 1.0   , -1.5 , 3.   ;upper bound for cost2
